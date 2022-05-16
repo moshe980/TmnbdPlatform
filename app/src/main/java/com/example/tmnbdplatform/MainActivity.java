@@ -4,16 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import Controller.ApiManager;
+import Logic.MyAPIManager;
+import Logic.APIService;
+import Logic.TmbdApiManager;
 
 public class MainActivity extends AppCompatActivity {
-    ApiManager apiManager;
+    private APIService apiService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        apiManager= ApiManager.getInstance();
+        apiService= TmbdApiManager.getInstance();
+       // apiService= MyAPIManager.getInstance();
+
+        apiService.printAllMovies();
 
 
 

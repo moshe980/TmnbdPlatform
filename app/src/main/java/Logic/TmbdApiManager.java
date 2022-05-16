@@ -1,4 +1,4 @@
-package Controller;
+package Logic;
 
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -8,17 +8,30 @@ import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
 
-public class ApiManager {
-    private OkHttpClient client;
-    private Request request;
-    private static ApiManager instance;
+public class TmbdApiManager implements APIService {
+    private final OkHttpClient client;
+    private final Request request;
+    private static TmbdApiManager instance;
 
-    private ApiManager() {
+    private TmbdApiManager() {
         client = new OkHttpClient();
 
         request = new Request.Builder()
                 .url("https://api.themoviedb.org/3/discover/movie?api_key=96624ea86553cd7a4caed4ecbdc35ec1")
                 .build();
+    }
+
+    public static TmbdApiManager getInstance() {
+        if (instance == null) {
+            instance = new TmbdApiManager();
+        }
+        return instance;
+
+    }
+
+
+    @Override
+    public void printAllMovies() {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
@@ -28,18 +41,8 @@ public class ApiManager {
             public void onResponse(Response response) throws IOException {
                 ResponseBody responseBody = response.body();
                 System.out.println(responseBody.string());
-
             }
         });
-
-
-    }
-
-    public static ApiManager getInstance() {
-        if (instance == null) {
-            instance = new ApiManager();
-        }
-        return instance;
 
     }
 
