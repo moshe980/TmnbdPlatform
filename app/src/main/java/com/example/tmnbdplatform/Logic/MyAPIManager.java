@@ -1,7 +1,4 @@
-package Logic;
-
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
+package com.example.tmnbdplatform.Logic;
 
 import java.util.ArrayList;
 import java.util.List;

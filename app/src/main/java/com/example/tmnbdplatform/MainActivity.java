@@ -4,9 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import Logic.MyAPIManager;
-import Logic.APIService;
-import Logic.TmbdApiManager;
+import com.example.tmnbdplatform.Logic.APIService;
+import com.example.tmnbdplatform.Logic.TmbdApiManager;
 
 public class MainActivity extends AppCompatActivity {
     private APIService apiService;
